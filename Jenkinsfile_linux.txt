@@ -1,0 +1,23 @@
+# Update the package list
+sudo yum update
+
+# Install OpenJDK 11
+sudo yum install java-11-openjdk-devel
+
+# Add the Jenkins repository key to the system
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+# Add the Jenkins repository to the package manager
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+# Enable the Jenkins repository
+sudo sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/jenkins.repo
+
+# Install Jenkins
+sudo yum install jenkins
+
+# Start Jenkins
+sudo systemctl start jenkins
+
+# Check the status of Jenkins to ensure it is running
+sudo systemctl status jenkins
